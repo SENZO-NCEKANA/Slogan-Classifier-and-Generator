@@ -38,18 +38,6 @@ Both models share the same vocabulary and embedding setup; the generator is trai
 
 ## Architecture
 
-The following diagram summarizes the data flow and model pipelines.
-
-```mermaid
-flowchart LR
-  subgraph gen [Slogan Generator]
-    A1[Industry + seed] --> A2[Tokenize and Pad] --> A3[Embedding 100d] --> A4[LSTM 150] --> A5[LSTM 100] --> A6[Dense Softmax] --> A7[Generated Slogan]
-  end
-  subgraph class [Slogan Classifier]
-    B1[Slogan text] --> B2[spaCy Preprocess] --> B3[Tokenize and Pad] --> B4[Embedding 100d] --> B5[LSTM 150] --> B6[LSTM 100] --> B7[Dense Softmax 142] --> B8[Predicted Industry]
-  end
-```
-
 ![Architecture](./docs/architecture.svg)
 
 **Slogan Generator:** Industry + seed → tokenize & pad → Embedding (100d) → LSTM (150) → LSTM (100) → Dense (softmax) → generated slogan.
